@@ -90,7 +90,7 @@ function Dashboard() {
         </span>
         <div className="w-[98%] max-w-xl bg-gray-500/50 rounded-md px-4 m-1">
           <h3 className="text-white text-center p-2">
-            Choose a time range of within an hour
+            Select a time range, maximum of one hour
           </h3>
           <div className="flex justify-center mx-auto gap-4">
             <div className="flex flex-col">
