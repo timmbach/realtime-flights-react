@@ -9,6 +9,7 @@ import { UserAuth } from "../../context/Auth";
 function Dashboard() {
   //user details that shows email address
   const { currentUser } = UserAuth();
+  const userEmail = currentUser.email;
 
   // the beginTime is the earliest arrival time for flights a user wants to view. It will be stored in state in a number type as required by the api
   const [beginTime, setBeginTime] = useState(null);
@@ -29,7 +30,7 @@ function Dashboard() {
   const [loading, setLoading] = useState(false);
 
   // this fromDateTime function will get the beginTime as a string from the date-time picker and store it in state
-  const fromDateTime = (dateString) => {
+  const fromDateTime = (value, dateString) => {
     // const dateTimeZone = new Date(dateString).toString();
     // const dateTimeString = new Date(dateString).toUTCString();
     // const dateTimeString = new Date(dateString)[Symbol.toPrimitive]("number");
@@ -38,7 +39,7 @@ function Dashboard() {
   };
 
   // this toDateTime function will get the endTime as a string from the date-time picker and store it in state
-  const toDateTime = (dateString) => {
+  const toDateTime = (value, dateString) => {
     setToDateTimeString(dateString);
   };
 
@@ -85,7 +86,7 @@ function Dashboard() {
     >
       <div className="flex flex-col justify-start items-center h-full mx-auto">
         <span className=" text-slate-200 font-semibold m-1">
-          Welcome, {currentUser.email}
+          Welcome, {userEmail}
         </span>
         <div className="w-[98%] max-w-xl bg-gray-500/50 rounded-md px-4 m-1">
           <h3 className="text-white text-center p-2">
