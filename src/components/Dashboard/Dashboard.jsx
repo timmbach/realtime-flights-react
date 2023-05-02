@@ -124,7 +124,7 @@ function Dashboard() {
         </h1>
         <div className="tableWrap border-none  no-scrollbar border">
           <table className="bg-stone-900/80 rounded-md p-10 w-full mx-auto">
-            <thead className="sticky top-0 bg-stone-700 text-slate-50 border border-black">
+            <thead className="sticky top-0 bg-stone-900 text-slate-50 border border-black">
               <tr className="overflow-hidden p-4">
                 <th className="p-4">AIRCRAFT</th>
                 <th className="p-4">TIME</th>
