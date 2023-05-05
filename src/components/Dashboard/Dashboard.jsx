@@ -17,6 +17,8 @@ function Dashboard() {
   // the endTime is the latest arrival time for flights a user wants to view. It will be stored in state in a number type as required by the api
   const [endTime, setEndTime] = useState(null);
 
+  const [error, setError] = useState("");
+
   // the fromDateTimeString is the string type of the endTime
   const [fromDateTimeString, setFromDateTimeString] = useState(null);
 
@@ -61,15 +63,27 @@ function Dashboard() {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
+      setError("");
       const flightData = await fetch(
         `https://opensky-network.org/api/flights/all?begin=${beginTime}&end=${endTime}`
-      ).then((response) => response.json());
+      )
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error(
+              "Error fetching flights from server. There is no active flight information available for the specified time range. Try adjusting the time range and ensure both times are not more than 1 hour apart"
+            );
+          }
+        })
+        .catch((error) => {
+          setError(error.message);
+        });
 
       setFlights(flightData);
-      console.log(flights);
+      // console.log(flights);
       setLoading(false);
     };
-
     if (endTime) fetchData();
   }, [beginTime, endTime]);
 
@@ -112,7 +126,7 @@ function Dashboard() {
           <div className="w-full flex justify-center items-center mx-auto m-2">
             <button
               onClick={handleSubmit}
-              className="bg-blue-500 text-white rounded-md p-1 px-6 cursor-pointer"
+              className="bg-blue-500 text-white border-none outline-none rounded-md p-1 px-6 cursor-pointer"
             >
               <i className="fa-solid fa-magnifying-glass mr-2 text-sm"></i>
               See Flights
@@ -122,6 +136,11 @@ function Dashboard() {
         <h1 className="bg-stone-800/70 rounded-md p-1 px-4 m-1 uppercase font-semibold text-orange-400">
           Real-time information of all flights around the world
         </h1>
+        {error && (
+          <span className="bg-red-200 p-1 px-2 m-2 w-[98%] max-w-3xl text-center text-sm rounded-sm text-red-500">
+            {error}
+          </span>
+        )}
         <div className="tableWrap border-none  no-scrollbar border">
           <table className="bg-stone-900/80 rounded-md p-10 w-full mx-auto">
             <thead className="sticky top-0 bg-stone-900 text-slate-50 border border-black">
