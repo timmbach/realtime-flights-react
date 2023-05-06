@@ -56,7 +56,7 @@ function Login() {
             <label className="py-2 font-medium">Email Address</label>
             <input
               onChange={(e) => setEmail(e.target.value)}
-              className="border p-3 rounded-md"
+              className="border outline-none p-3 rounded-md"
               type="email"
             />
           </div>
@@ -64,12 +64,12 @@ function Login() {
             <label className="py-2 font-medium">Password</label>
             <input
               onChange={(e) => setPassword(e.target.value)}
-              className="border p-3 rounded-md"
+              className="border outline-none p-3 rounded-md"
               type="password"
             />
           </div>
           <button className="border border-blue-500 bg-blue-600 hover:bg-blue-500 w-full p-4 my-6 text-white">
-            Sign In
+            Login
           </button>
         </form>
       </div>

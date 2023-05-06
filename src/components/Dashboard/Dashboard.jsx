@@ -146,27 +146,27 @@ function Dashboard() {
             <thead className="sticky top-0 bg-stone-900 text-slate-50 border border-black">
               <tr className="overflow-hidden p-4">
                 <th className="p-4">AIRCRAFT</th>
-                <th className="p-4">TIME</th>
-                <th className="p-4">arriving</th>
-                <th className="p-4">departing</th>
+                <th className="p-4 border-l-2 border-slate-800">TIME</th>
+                <th className="p-4 border-l-2 border-slate-800">arriving</th>
+                <th className="p-4 border-l-2 border-slate-800">departing</th>
               </tr>
             </thead>
             {loading ? (
               <tbody className="text-center text-orange-400">
                 <tr className="overflow-hidden p-4">
-                  <td>Loading ...</td>
-                  <td>Loading ...</td>
-                  <td>Loading ...</td>
-                  <td>Loading ...</td>
+                  <td className=" border border-orange-200">Loading ...</td>
+                  <td className=" border border-orange-200">Loading ...</td>
+                  <td className=" border border-orange-200">Loading ...</td>
+                  <td className=" border border-orange-200">Loading ...</td>
                 </tr>
               </tbody>
             ) : !flights || flights.length == [] ? (
               <tbody className="text-center text-orange-400">
                 <tr className="overflow-hidden p-4">
-                  <td>------</td>
-                  <td>------</td>
-                  <td>------</td>
-                  <td>------</td>
+                  <td className=" border border-orange-200">------</td>
+                  <td className=" border border-orange-200">------</td>
+                  <td className=" border border-orange-200">------</td>
+                  <td className=" border border-orange-200">------</td>
                 </tr>
               </tbody>
             ) : (
