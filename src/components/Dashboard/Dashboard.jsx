@@ -11,6 +11,10 @@ function Dashboard() {
   const { currentUser } = UserAuth();
   const userEmail = currentUser.email;
 
+  // logout from app
+  const { logout } = UserAuth();
+  const [logoutInfo, setLogoutInfo] = useState(false);
+
   // the beginTime is the earliest arrival time for flights a user wants to view. It will be stored in state in a number type as required by the api
   const [beginTime, setBeginTime] = useState(null);
 
@@ -87,6 +91,18 @@ function Dashboard() {
     if (endTime) fetchData();
   }, [beginTime, endTime]);
 
+  // logout from app
+  const handleLogout = async (e) => {
+    e.preventDefault();
+    setError("");
+    try {
+      await logout();
+      navigate("/login");
+    } catch (e) {
+      setError(e.message);
+    }
+  };
+
   return (
     <div
       style={{
@@ -99,8 +115,19 @@ function Dashboard() {
       }}
     >
       <div className="flex flex-col justify-start items-center h-full mx-auto">
-        <span className=" text-slate-200 font-semibold m-1">
+        <span className=" text-slate-200 font-semibold m-1 flex">
           Welcome, {userEmail}
+          <div className="flex flex-col text-center">
+            <span
+              className="text-red-600 ml-4 underline cursor-pointer "
+              onClick={handleLogout}
+              onMouseEnter={() => setLogoutInfo(true)}
+              onMouseLeave={() => setLogoutInfo(false)}
+            >
+              Logout?
+            </span>
+            {logoutInfo && <small className="text-[10px]">Are you sure?</small>}
+          </div>
         </span>
         <div className="w-[98%] max-w-xl bg-gray-500/50 rounded-md px-4 m-1">
           <h3 className="text-white text-center p-2">
@@ -146,9 +173,9 @@ function Dashboard() {
             <thead className="sticky top-0 bg-stone-900 text-slate-50 border border-black">
               <tr className="overflow-hidden p-4">
                 <th className="p-4">AIRCRAFT</th>
-                <th className="p-4 border-l-2 border-slate-800">TIME</th>
-                <th className="p-4 border-l-2 border-slate-800">arriving</th>
-                <th className="p-4 border-l-2 border-slate-800">departing</th>
+                <th className="p-4 border-l-2 border-gray-700">TIME</th>
+                <th className="p-4 border-l-2 border-gray-700">arriving</th>
+                <th className="p-4 border-l-2 border-gray-700">departing</th>
               </tr>
             </thead>
             {loading ? (
