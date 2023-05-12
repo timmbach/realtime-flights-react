@@ -58,6 +58,7 @@ function Login() {
               onChange={(e) => setEmail(e.target.value)}
               className="border outline-none p-3 rounded-md"
               type="email"
+              placeholder="Email Address"
             />
           </div>
           <div className="flex flex-col py-2">
@@ -66,6 +67,7 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
               className="border outline-none p-3 rounded-md"
               type="password"
+              placeholder="Password"
             />
           </div>
           <button className="border border-blue-500 bg-blue-600 hover:bg-blue-500 w-full p-4 my-6 text-white">

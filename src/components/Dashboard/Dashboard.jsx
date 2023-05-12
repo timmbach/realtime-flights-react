@@ -116,7 +116,7 @@ function Dashboard() {
     >
       <div className="flex flex-col justify-start items-center h-full mx-auto">
         <span className=" text-slate-200 font-semibold m-1 flex">
-          Welcome, {userEmail}
+          Welcome, <span class="text-red-600">{userEmail}</span>
           <div className="flex flex-col text-center">
             <span
               className="text-red-600 ml-4 underline cursor-pointer "
@@ -129,28 +129,29 @@ function Dashboard() {
             {logoutInfo && <small className="text-[10px]">Are you sure?</small>}
           </div>
         </span>
-        <div className="w-[98%] max-w-xl bg-gray-500/50 rounded-md px-4 m-1">
-          <h3 className="text-white text-center p-2">
+        <div className="w-[98%] max-w-2xl bg-gray-500/50 rounded-md px-4 m-1">
+          <h3 className="text-white text-center p-2 pb-0">
             Select a time range, maximum of one hour
           </h3>
           <div className="flex justify-center mx-auto gap-4">
             <div className="flex flex-col">
               <p className="text-white">
-                From:{" "}
+                Start time:{" "}
                 <span className="text-yellow-200">{fromDateTimeString}</span>{" "}
               </p>
 
               <DatePicker showTime onChange={fromDateTime} />
             </div>
-            <span className="text-white mt-6">-</span>
+            <span className="text-white mt-[7%]">_</span>
             <div>
               <p className="text-white">
-                To: <span className="text-yellow-200">{toDateTimeString}</span>
+                End time:{" "}
+                <span className="text-yellow-200">{toDateTimeString}</span>
               </p>
               <DatePicker showTime onChange={toDateTime} />
             </div>
           </div>
-          <div className="w-full flex justify-center items-center mx-auto m-2">
+          <div className="w-full flex justify-center items-center mx-auto m-2 mt-0">
             <button
               onClick={handleSubmit}
               className="bg-blue-500 text-white border-none outline-none rounded-md p-1 px-6 cursor-pointer"
