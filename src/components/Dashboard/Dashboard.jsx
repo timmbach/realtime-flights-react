@@ -116,10 +116,10 @@ function Dashboard() {
     >
       <div className="flex flex-col justify-start items-center h-full mx-auto">
         <span className=" text-slate-200 font-semibold m-1 flex">
-          Welcome, <span class="text-red-600">{userEmail}</span>
+          Welcome, <span class="text-white"> {userEmail}</span>
           <div className="flex flex-col text-center">
             <span
-              className="text-red-600 ml-4 underline cursor-pointer "
+              className="text-red-600 ml-4 underline cursor-pointer text-sm"
               onClick={handleLogout}
               onMouseEnter={() => setLogoutInfo(true)}
               onMouseLeave={() => setLogoutInfo(false)}
