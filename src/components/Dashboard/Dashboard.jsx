@@ -161,7 +161,7 @@ function Dashboard() {
             </button>
           </div>
         </div>
-        <h1 className="bg-stone-800/70 rounded-md p-1 px-4 m-1 uppercase font-semibold text-orange-400">
+        <h1 className="bg-stone-800/70 rounded-md p-1 px-4 m-1 text-orange-400">
           Real-time information of all flights around the world
         </h1>
         {error && (
