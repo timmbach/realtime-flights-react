@@ -37,11 +37,7 @@ function Dashboard() {
 
   // this fromDateTime function will get the beginTime as a string from the date-time picker and store it in state
   const fromDateTime = (value, dateString) => {
-    // const dateTimeZone = new Date(dateString).toString();
-    // const dateTimeString = new Date(dateString).toUTCString();
-    // const dateTimeString = new Date(dateString)[Symbol.toPrimitive]("number");
     setFromDateTimeString(dateString);
-    // console.log(dateString);
   };
 
   // this toDateTime function will get the endTime as a string from the date-time picker and store it in state
